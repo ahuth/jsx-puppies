@@ -2,6 +2,4 @@
 import "whatwg-fetch"
 // Polyfill promises.
 import Promise from "promise-polyfill";
-if (!window.Promise) {
-  window.Promise = Promise;
-}
+if (!window.Promise) {window.Promise = Promise}
