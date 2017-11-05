@@ -13,7 +13,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Slack Puppies',
+      inject: true,
+      template: "./public/index.html",
     }),
   ],
 }
