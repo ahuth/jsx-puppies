@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+
 module.exports = {
   entry: "src/index.js",
   output: {
@@ -9,4 +11,9 @@ module.exports = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Slack Puppies',
+    }),
+  ],
 }
