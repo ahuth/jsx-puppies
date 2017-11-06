@@ -8,6 +8,6 @@ const chars = {
 }
 const regex = new RegExp(Object.keys(chars).join("|"), "g");
 
-export default function htmlEscape(html) {
+export default function escape(html) {
   return String(html).replace(regex, match => chars[match])
 }
