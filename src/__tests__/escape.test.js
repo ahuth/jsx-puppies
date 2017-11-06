@@ -1,4 +1,4 @@
-import escape from "./escape"
+import escape from "../escape"
 
 test("escapes brackets", () => {
   expect(escape("<script>")).toEqual("&lt;script&gt;")

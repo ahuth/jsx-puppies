@@ -1,4 +1,4 @@
-import html from "./html"
+import html from "../html"
 
 test("parses a simple html element", () => {
   const node = html`<span>hello world</span>`
