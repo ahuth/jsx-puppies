@@ -1,3 +1,5 @@
+// Take a "props" object and set each property/value as attributes on the provided DOM node, giving
+// special consideration to event handlers and reserved keywords.
 export default function setProps(target, props) {
   Object.keys(props).forEach(name => {
     if (name === "className") {

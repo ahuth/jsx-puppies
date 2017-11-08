@@ -1,3 +1,4 @@
+// Create a virtual representation of the DOM that we want to construct.
 export default function createElement(type, config, children) {
   // Because we want to use JSX syntax, `config` can be `null` here, which means we can't use a
   // default parameter like we would want to.

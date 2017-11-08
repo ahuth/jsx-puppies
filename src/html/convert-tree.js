@@ -1,5 +1,6 @@
 import setProps from "./set-props"
 
+// Convert our virtual DOM representation into actual DOM nodes.
 export default function convertTree(node) {
   if (typeof node === "string") {
     return document.createTextNode(node)
