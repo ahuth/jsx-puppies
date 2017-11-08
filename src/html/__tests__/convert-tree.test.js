@@ -104,10 +104,20 @@ test("mixed DOM node and custom element children", () => {
 test("children as a prop", () => {
   const Custom = ({ children }) => (
     <div>
-      <span>{children}</span>
+      <h1>Title</h1>
+      <div>
+        {children}
+      </div>
     </div>
   )
   const tree = <Custom><button>pizza</button></Custom>
   const node = convertTree(tree)
-  expect(stringify(node)).toEqual("<div><span><button>pizza</button></span></div>")
+  expect(stringify(node)).toEqual(stripIndent`
+    <div>
+      <h1>Title</h1>
+      <div>
+        <button>pizza</button>
+      </div>
+    </div>
+  `)
 })
