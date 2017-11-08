@@ -1,5 +1,5 @@
 import "./polyfills"
 import App from "./app"
-import { el, render } from "./html"
+import { createElement, render } from "./html"
 
-render(el(App), document.getElementById("root"))
+render(createElement(App), document.getElementById("root"))

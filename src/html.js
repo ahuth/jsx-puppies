@@ -1,23 +1,23 @@
-export function el(type, props, ...children) {
+export function createElement(type, props, ...children) {
   return { type, props: props || {}, children }
 }
 
 export function render(component, domNode) {
-  const element = createElement(component)
+  const element = convertTree(component)
   domNode.innerHTML == ""
   domNode.appendChild(element)
 }
 
 // Convert a virtual DOM tree into actual DOM nodes.
-function createElement(node) {
+function convertTree(node) {
   if (typeof node === "string") {
     return document.createTextNode(node)
   } else if (typeof node.type === "function") {
-    return createElement(node.type(node.props))
+    return convertTree(node.type(node.props))
   }
   const element = document.createElement(node.type)
   setProps(element, node.props)
-  node.children.map(createElement).forEach((child) => element.appendChild(child))
+  node.children.map(convertTree).forEach((child) => element.appendChild(child))
   return element
 }
 
