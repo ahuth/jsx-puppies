@@ -1,3 +1,5 @@
+/** @jsx createElement */
+
 import pretty from "pretty"
 import { stripIndent } from "common-tags"
 import createElement from "../create-element"
@@ -10,23 +12,19 @@ function stringify(node) {
 }
 
 test("no children", () => {
-  const tree = createElement("div")
+  const tree = <div></div>
   const node = convertTree(tree)
   expect(stringify(node)).toEqual("<div></div>")
 })
 
 test("a single text child", () => {
-  const tree = createElement("span", null, "hello world")
+  const tree = <span>hello world</span>
   const node = convertTree(tree)
   expect(stringify(node)).toEqual("<span>hello world</span>")
 })
 
 test("a single DOM node child", () => {
-  const tree = createElement(
-    "ul",
-    null,
-    createElement("li", { id: "first" }, "one")
-  )
+  const tree = <ul><li id="first">one</li></ul>
   const node = convertTree(tree)
   expect(stringify(node)).toEqual(stripIndent`
     <ul>
@@ -36,11 +34,11 @@ test("a single DOM node child", () => {
 })
 
 test("multiple DOM node children", () => {
-  const tree = createElement(
-    "ol",
-    null,
-    createElement("li", { id: "first" }, "one"),
-    createElement("li", { id: "second" }, "two"),
+  const tree = (
+    <ol>
+      <li id="first">one</li>
+      <li id="second">two</li>
+    </ol>
   )
   const node = convertTree(tree)
   expect(stringify(node)).toEqual(stripIndent`
@@ -52,19 +50,19 @@ test("multiple DOM node children", () => {
 })
 
 test("a single custom element child", () => {
-  const custom = ({ text }) => createElement("span", null, text)
-  const tree = createElement("div", null, createElement(custom, { text: "foo" }))
+  const Custom = ({ text }) => <span>{text}</span>
+  const tree = <div><Custom text="foo" /></div>
   const node = convertTree(tree)
   expect(stringify(node)).toEqual("<div><span>foo</span></div>")
 })
 
 test("multiple custom element children", () => {
-  const custom = ({ text }) => createElement("li", { className: "item" }, text)
-  const tree = createElement(
-    "ul",
-    null,
-    createElement(custom, { text: "eins" }),
-    createElement(custom, { text: "zwei" }),
+  const Custom = ({ text }) => <li className="item">{text}</li>
+  const tree = (
+    <ul>
+      <Custom text="eins" />
+      <Custom text="zwei" />
+    </ul>
   )
   const node = convertTree(tree)
   expect(stringify(node)).toEqual(stripIndent`
@@ -76,19 +74,19 @@ test("multiple custom element children", () => {
 })
 
 test("mixed DOM node and custom element children", () => {
-  const first = ({ id }) => createElement(
-    "div",
-    { className: "section" },
-    createElement("h1", { id }, "Stuff"),
-    createElement("div", null, "wat"),
+  const First = ({ id }) => (
+    <div className="section">
+      <h1 id={id}>Stuff</h1>
+      <div>wat</div>
+    </div>
   )
-  const second = () => createElement("input", { className: "foobar" })
-  const tree = createElement(
-    "div",
-    null,
-    createElement(first, { id: "some-stuff" }),
-    createElement(second, null),
-    createElement("button", null, "Click"),
+  const Second = ({ className }) => <input className={className} />
+  const tree = (
+    <div>
+      <First id="some-stuff" />
+      <Second className="foobar" />
+      <button>Click</button>
+    </div>
   )
   const node = convertTree(tree)
   expect(stringify(node)).toEqual(stripIndent`
