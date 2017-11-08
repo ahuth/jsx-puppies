@@ -1,10 +1,12 @@
+import pretty from "pretty"
+import { stripIndent } from "common-tags"
 import createElement from "../create-element"
 import convertTree from "../convert-tree"
 
 function stringify(node) {
   const div = document.createElement("div")
   div.appendChild(node)
-  return div.innerHTML
+  return pretty(div.innerHTML)
 }
 
 test("no children", () => {
@@ -26,7 +28,11 @@ test("a single DOM node child", () => {
     createElement("li", { id: "first" }, "one")
   )
   const node = convertTree(tree)
-  expect(stringify(node)).toEqual('<ul><li id="first">one</li></ul>')
+  expect(stringify(node)).toEqual(stripIndent`
+    <ul>
+      <li id="first">one</li>
+    </ul>
+  `)
 })
 
 test("multiple DOM node children", () => {
@@ -37,7 +43,12 @@ test("multiple DOM node children", () => {
     createElement("li", { id: "second" }, "two"),
   )
   const node = convertTree(tree)
-  expect(stringify(node)).toEqual('<ol><li id="first">one</li><li id="second">two</li></ol>')
+  expect(stringify(node)).toEqual(stripIndent`
+    <ol>
+      <li id="first">one</li>
+      <li id="second">two</li>
+    </ol>
+  `)
 })
 
 test("a single custom element child", () => {
@@ -56,7 +67,12 @@ test("multiple custom element children", () => {
     createElement(custom, { text: "zwei" }),
   )
   const node = convertTree(tree)
-  expect(stringify(node)).toEqual('<ul><li class="item">eins</li><li class="item">zwei</li></ul>')
+  expect(stringify(node)).toEqual(stripIndent`
+    <ul>
+      <li class="item">eins</li>
+      <li class="item">zwei</li>
+    </ul>
+  `)
 })
 
 test("mixed DOM node and custom element children", () => {
@@ -75,7 +91,16 @@ test("mixed DOM node and custom element children", () => {
     createElement("button", null, "Click"),
   )
   const node = convertTree(tree)
-  expect(stringify(node)).toEqual('<div><div class="section"><h1 id="some-stuff">Stuff</h1><div>wat</div></div><input class="foobar"><button>Click</button></div>')
+  expect(stringify(node)).toEqual(stripIndent`
+    <div>
+      <div class="section">
+        <h1 id="some-stuff">Stuff</h1>
+        <div>wat</div>
+      </div>
+      <input class="foobar">
+      <button>Click</button>
+    </div>
+  `)
 })
 
 test("children as a prop", () => {
