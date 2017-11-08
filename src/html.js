@@ -17,7 +17,7 @@ function createElement(node) {
   }
   const element = document.createElement(node.type)
   setProps(element, node.props)
-  node.children.map(createElement).forEach(element.appendChild.bind(element))
+  node.children.map(createElement).forEach((child) => element.appendChild(child))
   return element
 }
 
