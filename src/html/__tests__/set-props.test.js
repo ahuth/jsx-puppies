@@ -29,4 +29,10 @@ describe("setProps", () => {
     expect(target.className).toEqual("some-class")
     expect(target.id).toEqual("some-id")
   })
+
+  test("ignoring children props", () => {
+    setProps(target, { className: "some-class", children: 666 })
+    expect(target.className).toEqual("some-class")
+    expect(target.getAttribute("children")).toBeNull()
+  })
 })
