@@ -13,7 +13,7 @@ function createElement(node) {
   if (typeof node === "string") {
     return document.createTextNode(node)
   } else if (typeof node.type === "function") {
-    return createElement(node.type())
+    return createElement(node.type(node.props))
   }
   const element = document.createElement(node.type)
   setProps(element, node.props)
