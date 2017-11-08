@@ -5,6 +5,6 @@ export default function App() {
     "div",
     null,
     el("h1", { id: "title" }, "Title"),
-    el("span", { className: "message" }, "hello world"),
+    el("span", { className: "message", onClick: () => { alert("Message!") } }, "hello world"),
   )
 }
