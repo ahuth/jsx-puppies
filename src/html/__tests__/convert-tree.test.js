@@ -102,12 +102,12 @@ test("mixed DOM node and custom element children", () => {
 })
 
 test("children as a prop", () => {
-  const custom = ({ children }) => createElement(
-    "div",
-    null,
-    createElement("span", null, ...children),
+  const Custom = ({ children }) => (
+    <div>
+      <span>{children}</span>
+    </div>
   )
-  const tree = createElement(custom, null, createElement("button", null, "pizza"))
+  const tree = <Custom><button>pizza</button></Custom>
   const node = convertTree(tree)
   expect(stringify(node)).toEqual("<div><span><button>pizza</button></span></div>")
 })
