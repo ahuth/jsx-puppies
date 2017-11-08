@@ -1,5 +1,5 @@
-export function el(type, ...children) {
-  return { type, children }
+export function el(type, props, ...children) {
+  return { type, props: props || {}, children }
 }
 
 export function render(component, domNode) {
@@ -16,6 +16,17 @@ function createElement(node) {
     return createElement(node.type())
   }
   const element = document.createElement(node.type)
+  setProps(element, node.props)
   node.children.map(createElement).forEach(element.appendChild.bind(element))
   return element
+}
+
+function setProps(target, props) {
+  Object.keys(props).forEach(name => {
+    if (name === "className") {
+      target.setAttribute("class", props[name])
+    } else {
+      target.setAttribute(name, props[name])
+    }
+  })
 }

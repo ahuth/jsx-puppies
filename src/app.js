@@ -3,7 +3,8 @@ import { el } from "./html"
 export default function App() {
   return el(
     "div",
-    el("h1", "Title"),
-    el("span", "hello world"),
+    null,
+    el("h1", { id: "title" }, "Title"),
+    el("span", { className: "message" }, "hello world"),
   )
 }
