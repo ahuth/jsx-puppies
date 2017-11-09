@@ -7,6 +7,7 @@ export default function convertTree(node) {
   } else if (typeof node.type === "function") {
     return convertTree(node.type(node.props))
   }
+
   const element = document.createElement(node.type)
   setProps(element, node.props)
 
