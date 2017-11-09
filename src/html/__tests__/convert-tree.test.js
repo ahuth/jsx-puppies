@@ -23,6 +23,12 @@ test("a single text child", () => {
   expect(stringify(node)).toEqual("<span>hello world</span>")
 })
 
+test("a single number child", () => {
+  const tree = <span>{666}</span>
+  const node = convertTree(tree)
+  expect(stringify(node)).toEqual("<span>666</span>")
+})
+
 test("a single DOM node child", () => {
   const tree = <ul><li id="first">one</li></ul>
   const node = convertTree(tree)

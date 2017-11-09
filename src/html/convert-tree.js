@@ -2,7 +2,7 @@ import setProps from "./set-props"
 
 // Convert our virtual DOM representation into actual DOM nodes.
 export default function convertTree(node) {
-  if (typeof node === "string") {
+  if (typeof node === "string" || typeof node === "number") {
     return document.createTextNode(node)
   } else if (typeof node.type === "function") {
     return convertTree(node.type(node.props))
