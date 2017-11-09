@@ -2,17 +2,14 @@
 
 import store from "./store"
 import { createElement } from "./html"
-
-const increment = () => store.dispatch((prevState) => {
-  return { ...prevState, count: prevState.count + 1 }
-})
+import { increment } from "./actions"
 
 export default function App({ count, dispatch }) {
   return (
     <div>
       <h1 id="title">Title</h1>
       <span>{count}</span>
-      <button onClick={increment}>Increment</button>
+      <button onClick={() => store.dispatch(increment)}>Increment</button>
     </div>
   )
 }
