@@ -14,4 +14,13 @@ describe("render", () => {
     render(component, root)
     expect(root.childElementCount).toEqual(1)
   })
+
+  test("rendering multiple times", () => {
+    const component = createElement("span", null, "hello world")
+    expect(root.childElementCount).toEqual(0)
+    render(component, root)
+    expect(root.childElementCount).toEqual(1)
+    render(component, root)
+    expect(root.childElementCount).toEqual(1)
+  })
 })

@@ -4,6 +4,6 @@ import convertTree from "./convert-tree"
 // the specified node.
 export default function render(component, domNode) {
   const element = convertTree(component)
-  domNode.innerHTML == ""
+  domNode.innerHTML = ""
   domNode.appendChild(element)
 }
