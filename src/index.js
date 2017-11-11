@@ -1,7 +1,7 @@
 /** @jsx createElement */
 
 import "./polyfills"
-import App from "./app"
+import App from "./components/app"
 import fetchPups from "./fetch-pups"
 import store from "./store"
 import { createElement, render } from "./html"

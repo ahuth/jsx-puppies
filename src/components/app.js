@@ -1,8 +1,8 @@
 /** @jsx createElement */
 
-import store from "./store"
-import { createElement } from "./html"
-import { increment } from "./actions"
+import store from "../store"
+import { createElement } from "../html"
+import { increment } from "../actions"
 
 export default function App({ loading, images }) {
   if (loading) {
