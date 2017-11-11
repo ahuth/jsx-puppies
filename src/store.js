@@ -1,5 +1,6 @@
 const initialState = {
-  count: 0
+  loading: true,
+  images: [],
 }
 
 class Store {

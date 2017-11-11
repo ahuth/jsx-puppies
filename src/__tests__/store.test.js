@@ -2,7 +2,8 @@ import store from "../store"
 
 test("initial state", () => {
   expect(store.getState()).toEqual({
-    count: 0,
+    loading: true,
+    images: [],
   })
 })
 
@@ -12,7 +13,8 @@ test("subscribing", () => {
   store.dispatch(state => state)
   expect(callback.mock.calls.length).toEqual(1)
   expect(callback.mock.calls[0][0]).toEqual({
-    count: 0,
+    loading: true,
+    images: [],
   })
 })
 
@@ -20,6 +22,8 @@ test("dispatching", () => {
   const reducer = prevState => ({ ...prevState, count: -50 })
   store.dispatch(reducer)
   expect(store.getState()).toEqual({
+    loading: true,
+    images: [],
     count: -50,
   })
 })
