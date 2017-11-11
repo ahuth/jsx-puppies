@@ -1,20 +1,13 @@
 /** @jsx createElement */
 
-import store from "../store"
+import List from "./list"
+import Loading from "./loading"
 import { createElement } from "../html"
-import { increment } from "../actions"
 
 export default function App({ loading, images }) {
   if (loading) {
-    return <p>Please wait...</p>
+    return <Loading />
+  } else {
+    return <List images={images} />
   }
-  return (
-    <ul>
-      {images.map((image, index) => (
-        <li>
-          <img width="50" src={image} alt={`dog picture ${index + 1}`} />
-        </li>
-      ))}
-    </ul>
-  )
 }
