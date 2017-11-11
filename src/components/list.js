@@ -4,12 +4,14 @@ import { createElement } from "../html"
 
 export default function List({ images }) {
   return (
-    <ul>
+    <div className="row">
       {images.map((image, index) => (
-        <li>
-          <img width="50" src={image} alt={`dog picture ${index + 1}`} />
-        </li>
+        <div className="col-sm">
+          <div className="card">
+            <img className="card-img-top" src={image} alt={`dog picture ${index + 1}`} />
+          </div>
+        </div>
       ))}
-    </ul>
+    </div>
   )
 }
