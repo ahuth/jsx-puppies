@@ -10,7 +10,7 @@ import { createElement, render } from "./html"
 import { identity, pupsFetched } from "./actions"
 
 store.subscribe((state) => {
-  render(<App loading={state.loading} images={state.images} />, document.getElementById("root"))
+  render(<App current={state.current} loading={state.loading} images={state.images} />, document.getElementById("root"))
 })
 
 fetchPups("labrador").then((images) => {
