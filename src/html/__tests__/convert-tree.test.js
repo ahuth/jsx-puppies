@@ -17,6 +17,30 @@ test("no children", () => {
   expect(stringify(node)).toEqual("<div></div>")
 })
 
+test("null children", () => {
+  const tree = <span>{null}</span>
+  const node = convertTree(tree)
+  expect(stringify(node)).toEqual("<span></span>")
+})
+
+test("undefined children", () => {
+  const tree = <span>{undefined}</span>
+  const node = convertTree(tree)
+  expect(stringify(node)).toEqual("<span></span>")
+})
+
+test("false children", () => {
+  const tree = <span>{false}</span>
+  const node = convertTree(tree)
+  expect(stringify(node)).toEqual("<span></span>")
+})
+
+test("the number zero", () => {
+  const tree = <span>{0}</span>
+  const node = convertTree(tree)
+  expect(stringify(node)).toEqual("<span>0</span>")
+})
+
 test("a single text child", () => {
   const tree = <span>hello world</span>
   const node = convertTree(tree)
