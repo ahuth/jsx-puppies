@@ -1,4 +1,5 @@
 const initialState = {
+  current: -1,
   loading: true,
   images: [],
 }
