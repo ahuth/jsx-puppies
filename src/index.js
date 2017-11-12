@@ -1,7 +1,8 @@
 /** @jsx createElement */
 
-import "./polyfills"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./index.css"
+import "./polyfills"
 import App from "./components/app"
 import fetchPups from "./fetch-pups"
 import store from "./store"
