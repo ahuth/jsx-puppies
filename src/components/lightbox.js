@@ -19,8 +19,8 @@ export default function Lightbox({ image, index }) {
           </figure>
         </section>
         <footer class="modal-card-foot">
-          <button className="button" onClick={() => store.dispatch(lightboxDecremented)}>◁</button>
-          <button className="button" onClick={() => store.dispatch(lightboxIncremented)}>▷</button>
+          <button className="button" onClick={() => store.dispatch(lightboxDecremented)}>←</button>
+          <button className="button" onClick={() => store.dispatch(lightboxIncremented)}>→</button>
         </footer>
       </div>
     </div>
