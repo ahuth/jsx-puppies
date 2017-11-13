@@ -16,7 +16,7 @@ export default function App({ current, loading, images }) {
           : <List images={images} />
         }
         {current >= 0 &&
-          <Lightbox image={images[current]} />
+          <Lightbox image={images[current]} index={current} />
         }
       </div>
     </div>

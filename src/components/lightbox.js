@@ -4,13 +4,13 @@ import store from "../store"
 import { createElement } from "../html"
 import { lightboxClosed, lightboxDecremented, lightboxIncremented } from "../actions"
 
-export default function Lightbox({ image }) {
+export default function Lightbox({ image, index }) {
   return (
     <div className="modal is-active">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Pup!</p>
+          <p class="modal-card-title">Dog picture {index + 1}</p>
           <button class="delete" aria-label="close" onClick={() => store.dispatch(lightboxClosed)}></button>
         </header>
         <section class="modal-card-body">

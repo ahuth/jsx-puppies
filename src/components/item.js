@@ -9,7 +9,7 @@ export default function Item({ image, index }) {
     <div className="card" style="cursor: pointer">
       <div className="card-image" onClick={() => store.dispatch(pupClicked(index))}>
         <figure className="image">
-          <img src={image} alt="Dog picture" />
+          <img src={image} alt={`Dog picture ${index + 1}`} />
         </figure>
       </div>
     </div>
