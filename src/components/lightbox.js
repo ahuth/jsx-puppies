@@ -6,14 +6,23 @@ import { lightboxClosed, lightboxDecremented, lightboxIncremented } from "../act
 
 export default function Lightbox({ image }) {
   return (
-    <div>
-      <div>
-        <h4>Pup!</h4>
-        <button className="button" onClick={() => store.dispatch(lightboxClosed)}>×</button>
+    <div className="modal is-active">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Pup!</p>
+          <button class="delete" aria-label="close" onClick={() => store.dispatch(lightboxClosed)}></button>
+        </header>
+        <section class="modal-card-body">
+          <figure className="image">
+            <img src={image} alt="Pup!" />
+          </figure>
+        </section>
+        <footer class="modal-card-foot">
+          <button className="button" onClick={() => store.dispatch(lightboxDecremented)}>◁</button>
+          <button className="button" onClick={() => store.dispatch(lightboxIncremented)}>▷</button>
+        </footer>
       </div>
-      <button className="button" onClick={() => store.dispatch(lightboxDecremented)}>◁</button>
-      <img src={image} alt="Pup!" />
-      <button className="button" onClick={() => store.dispatch(lightboxIncremented)}>▷</button>
     </div>
   )
 }

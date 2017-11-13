@@ -6,8 +6,12 @@ import { pupClicked } from "../actions"
 
 export default function Item({ image, index }) {
   return (
-    <div onClick={() => store.dispatch(pupClicked(index))}>
-      <img src={image} alt="Dog picture" />
+    <div className="card">
+      <div className="card-image" onClick={() => store.dispatch(pupClicked(index))}>
+        <figure className="image">
+          <img src={image} alt="Dog picture" />
+        </figure>
+      </div>
     </div>
   )
 }
