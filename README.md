@@ -11,7 +11,7 @@ An exercise showing a list of Labrador pictures. Clicking one opens up a modal d
 
 1. Install dependencies with `yarn install`
 2. Start the server with `yarn start`
-3. Navigate a browser to `localhost:6060`
+3. Navigate a browser to `localhost:8080`
 
 ## Testing
 
