@@ -7,7 +7,7 @@ import { createElement } from "../html"
 
 export default function App({ current, loading, images }) {
   return (
-    <div className="container">
+    <div className="section">
       {loading
         ? <Loading />
         : <List images={images} />
