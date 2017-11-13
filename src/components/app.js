@@ -7,13 +7,11 @@ import { createElement } from "../html"
 
 export default function App({ current, loading, images }) {
   return (
-    <div class="app">
-      <div className="container">
-        {loading
-          ? <Loading />
-          : <List images={images} />
-        }
-      </div>
+    <div className="container">
+      {loading
+        ? <Loading />
+        : <List images={images} />
+      }
       {current >= 0 &&
         <Lightbox image={images[current]} />
       }

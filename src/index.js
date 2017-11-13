@@ -1,7 +1,6 @@
 /** @jsx createElement */
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./index.css"
+import "bulma/css/bulma.css"
 import "./polyfills"
 import App from "./components/app"
 import fetchPups from "./fetch-pups"
