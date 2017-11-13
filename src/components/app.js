@@ -3,18 +3,13 @@
 import Lightbox from "./lightbox"
 import List from "./list"
 import Loading from "./loading"
+import Nav from "./nav"
 import { createElement } from "../html"
 
 export default function App({ current, loading, images }) {
   return (
     <div>
-      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://www.slack.com">
-            Slack 🐶
-          </a>
-        </div>
-      </nav>
+      <Nav />
       <div className="section">
         {loading
           ? <Loading />
